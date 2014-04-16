@@ -40,6 +40,7 @@ public class Task01 {
             }
             System.out.printf(" %1$d", i);
         }
+        System.out.println();
     }
 
     /**
