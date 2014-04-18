@@ -49,10 +49,11 @@ public class Task01 {
     private void init()
     {
         try {
-            List<Integer> list = new ArrayList<Integer>();
+            String  path = this.getClass().getClassLoader().getResource("resources/in.txt").getPath().substring(1);
+            Scanner sc   = new Scanner(new File(path));
 
             // read integers form input file
-            Scanner sc = new Scanner(new File("resources/in.txt"));
+            List<Integer> list = new ArrayList<Integer>();
             while (sc.hasNextInt()) {
                 list.add(sc.nextInt());
             }
