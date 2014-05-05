@@ -12,7 +12,7 @@ public class JavaSamples {
         System.out.println("\n******** TASK03 **************");
         // Task03.main(args);
 
-        System.out.println("\n******** TASK03 **************");
+        System.out.println("\n******** TASK04 **************");
         Task04.main(args);
     }
 
