@@ -16,7 +16,10 @@ public class JavaSamples {
         //Task04.main(args);
         
         System.out.println("\n******** TASK05 **************");
-        Task05.main(args);
+        // Task05.main(args);
+
+        System.out.println("\n******** TASK05 **************");
+        Task06.main(args);
     }
 
 }
