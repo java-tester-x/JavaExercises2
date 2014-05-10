@@ -13,30 +13,27 @@ import java.util.Scanner;
 
 public class Task06 extends AbstractTask {
 
-    private int[][] matrix;
-
     public static void main(String[] args)
     {
-        int elementCount = 0;
-        Scanner in = new Scanner(System.in);
-        try {
-            System.out.print("Please enter a positive number as count of elemnts in the matrix: ");
-            elementCount = in.hasNextInt() ? in.nextInt() : 0;
-        }
-        catch(Exception e) {
-            System.out.println(e.getMessage());
-        }
-
-        if (elementCount == 0) {
-            return;
-        }
-            
-
-        // Task06 t = new Task06();
-        // t.fillMatrix(elementCount);
-
-        // System.out.printf("Size of matrix: %1$d\n", t.matrix.length);
-        // t.print_r(t.matrix);
+        Task06 t = new Task06();
+        t.calculatePI(0.01);
+        t.calculatePI(0.001);
+        t.calculatePI(0.0001);
+        t.calculatePI(0.00001);
     }
 
+    private void calculatePI(double accuracy)
+    {
+        int elementCount = 0;
+        double prevPi    = 0.0;
+        double currPi    = 4.0;
+        while (Math.abs(currPi - prevPi) >= accuracy)
+        {
+            elementCount++;
+            prevPi  = currPi;
+            currPi += (elementCount % 2 == 0 ? 1 : -1) * 4.0/(2*elementCount + 1);
+        }
+
+        System.out.printf("%1$d members are required for calculating PI with accuracy %2$f \n", elementCount, accuracy);
+    }
 }
