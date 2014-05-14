@@ -22,7 +22,10 @@ public class JavaSamples {
         // Task06.main(args);
 
         System.out.println("\n******** TASK07 **************");
-        Task07.main(args);
+        // Task07.main(args);
+
+        System.out.println("\n******** TASK08 **************");
+        Task08.main(args);
     }
 
 }
