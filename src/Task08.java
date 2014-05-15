@@ -16,26 +16,27 @@ public class Task08 extends AbstractTask {
 
     public static void main(String[] args) {
         Task08 t = new Task08();
-        t.run();
+        // t.run();
+        System.out.printf("Is number %1$d correct? Answer: %2$s"
+            , 3816547290L, String.valueOf(t.isGoodNumber(3816547290L))
+        );
     } 
 
     private void run()
     {
         long goodNumber = 0L;
-        for(long x = 1000000000L; x <= 9999999990L; x+=10)
+        for(long x = 3816547290L; x <= 9999999990L; x+=10)
         {
             if ( ! haveUniqueDigits(x)) {
                 continue;
             }
-            System.out.println(x);
-
             if (isGoodNumber(x)) {
                 goodNumber = x;
-                break;
+                // break;
+                System.out.printf("Original number is: %1$d\n", x);
             }
         }
-        System.out.printf("Original number is: %1$d\n", goodNumber);
-        
+        System.out.printf("Original number is: %1$d\n", goodNumber);      
     }
 
     private boolean haveUniqueDigits(long number)
@@ -44,8 +45,6 @@ public class Task08 extends AbstractTask {
         String numberStr = Long.toString(number);
         for(char ch : "0123456789".toCharArray())
         {
-            // System.out.println(numberStr);
-            // System.out.println((numberStr.replace(String.valueOf(ch), "")));
             if (numberStr.length() - (numberStr.replace(String.valueOf(ch), "")).length() != 1) {
                 flag = false;
                 break;
@@ -61,7 +60,6 @@ public class Task08 extends AbstractTask {
         for (int j = 2; j <= 10; j++)
         {
             long x = generateNumberAsFirstDigits(number, j);
-            // System.out.printf("generateNumberAsFirstDigits(%1$d, %2$d) : %3$d\n", number, j, x);
             if (! isDividedBy(x, j)) {
                 isGood = false;
                 break;
