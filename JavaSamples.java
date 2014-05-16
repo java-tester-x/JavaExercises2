@@ -27,8 +27,11 @@ public class JavaSamples {
         System.out.println("\n******** TASK08 **************");
         // Task08.main(args);
 
-        System.out.println("\n******** TASK08 **************");
-        Task09.main(args);
+        System.out.println("\n******** TASK09 **************");
+        // Task09.main(args);
+
+        System.out.println("\n******** TASK10 **************");
+        Task10.main(args);
     }
 
 }

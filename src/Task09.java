@@ -28,7 +28,7 @@ public class Task09 extends AbstractTask {
         print_r(matrix);
 
         System.out.println("Find out original column (if it possible)...");
-        int column =  findColumn2();
+        int column =  findColumn();
 
         if (column == 0) {
             System.out.println("Matrix have no \"split\" column.");
@@ -43,7 +43,7 @@ public class Task09 extends AbstractTask {
      * [findColumn description]
      * @return [description]
      */
-    private int findColumn()
+    private int findColumnBad()
     {
         int column = 0;
         int[][] left;
@@ -69,7 +69,7 @@ public class Task09 extends AbstractTask {
      * [findColumn2 description]
      * @return [description]
      */
-    private int findColumn2()
+    private int findColumn()
     {
         int column = 0;
         for (int k = 1; k < matrix[0].length -1; k++)
