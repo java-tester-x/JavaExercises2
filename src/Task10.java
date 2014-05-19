@@ -21,8 +21,6 @@ public class Task10 extends AbstractTask {
 
     private int[][] matrix;
 
-    private int[][][] localMinimum;
-
     public static void main(String[] args) {
         Task10 t = new Task10();
         t.run();
@@ -31,22 +29,65 @@ public class Task10 extends AbstractTask {
     private void run()
     {
         generateRandomMatrix();
+        System.out.println("Input matrix:");
         print_r(matrix);
         System.out.println();
-        print_r(getElementNeighbors(0, 0));
-        System.out.println();
-        print_r(getElementNeighbors(0, 1));
-        System.out.println();
-        print_r(getElementNeighbors(1, 0));
-        System.out.println();
-        print_r(getElementNeighbors(1, 1));
+        findAndShowLocalMinimum();
     }
 
-    private void findLocalMinimum()
+    /**
+     * [findLocalMinimum description]
+     */
+    private void findAndShowLocalMinimum()
     {
-        // 
+        int i = 0;
+        for (int[] row : matrix)
+        {
+            int j = 0;
+            for (int x : row)
+            {
+                if (isLocalMinimum(i, j)) {
+                    System.out.printf("Element a[%1$d][%2$d] = %3$d is local minimum\n", i, j, x);
+                }
+                j++;
+            }
+            i++;
+        }
     }
 
+    /**
+     * [isLocalMinimum description]
+     * @param  rowIndex    [description]
+     * @param  columnIndex [description]
+     * @return             [description]
+     */
+    private boolean isLocalMinimum(int rowIndex, int columnIndex)
+    {
+        int[][] neighbors = getElementNeighbors(rowIndex, columnIndex);
+        int     min       = neighbors[1][1];
+        boolean result    = true;
+        
+        int i = 0;
+        for (int[] row : neighbors)
+        {
+            int j = 0;
+            for(int x : row)
+            {
+                if (3*i+j != 4 && x <= min) {
+                    result = false;
+                    break;
+                }
+                j++;
+            }
+            i++;
+        }
+
+        return result;
+    }
+
+    /**
+     * 
+     */
     private int[][] getElementNeighbors(int rowIndex, int columnIndex)
     {
         int[][] neighbors = new int[3][3];
@@ -56,23 +97,27 @@ public class Task10 extends AbstractTask {
             }
         }
 
-        for (int i = rowIndex-1; i <= rowIndex+1; i++)
+        int m = rowIndex-1;
+        for (int i = 0; i < 3; i++)
         {
-            for (int j = columnIndex-1; j <= columnIndex+1; j++)
+            int n = columnIndex-1;
+            for (int j = 0; j < 3; j++)
             {
-                if (i < 0 || i > matrix.length-1) {
-                    continue;
+                try {
+                    neighbors[i][j] = matrix[m][n];
                 }
-                if (j < 0 || j > matrix[i].length-1) {
-                    continue;
-                }
-                neighbors[i-(rowIndex-1)][j-(columnIndex-1)] = matrix[i][j];
+                catch(Exception e) {}                
+                n++;
             }
-        }
+            m++;
+        }        
 
         return neighbors;
     }
 
+    /**
+     * [generateRandomMatrix description]
+     */
     private void generateRandomMatrix()
     {
         int    rowCount;
