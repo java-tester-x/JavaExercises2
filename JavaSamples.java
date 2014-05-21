@@ -31,7 +31,13 @@ public class JavaSamples {
         // Task09.main(args);
 
         System.out.println("\n******** TASK10 **************");
-        Task10.main(args);
+        // Task10.main(args);
+
+        System.out.println("\n******** TASK10 **************");
+        // Task11.main(args);
+
+        System.out.println("\n******** TASK10 **************");
+        Task12.main(args);
     }
 
 }
