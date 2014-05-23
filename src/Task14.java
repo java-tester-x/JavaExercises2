@@ -42,26 +42,45 @@ public class Task14 extends AbstractTask {
             endIndex   = maxElementIndex;
         }
 
-        orderByDescRangeOfElements(startIndex, endIndex);
+        orderRangeOfElements(startIndex, endIndex);
 
         System.out.println("Output Matrix:");
         print_r(matrix);
     }
 
-    private void orderByDescRangeOfElements(int startIndex, int endIndex)
+    private void orderRangeOfElements(int startIndex, int endIndex)
     {
-        int i = 0;
-        for(int[] row : matrix)
+        while (true)
         {
-            for (int j = 0; j < row.length; j++) {
-                if (   row.length * i + j > startIndex
-                    && row.length * i + j < endIndex
-                ) {
-                    //matrix[i][j] = newValue;
+            boolean needNextStep = false;
+            
+            int i = 0;
+            for(int[] row : matrix)
+            {
+                for (int j = 0; j < row.length; j++)
+                {
+                    int k = row.length * i + j;
+                    if (k <= startIndex || k >= endIndex-1) {
+                        continue;
+                    }
+
+                    int n = (k+1) / row.length;
+                    int m = (k+1) % row.length;
+                    if (matrix[i][j] < matrix[n][m]) {
+                        System.out.println("tmp = "+matrix[i][j]);
+                        int tmp      = matrix[i][j];
+                        matrix[i][j] = matrix[n][m];
+                        matrix[n][m] = tmp;
+                        needNextStep = true;
+                    }
                 }
+                i++;
             }
-            i++;
-        }   
+
+            if (! needNextStep) {
+                break;
+            }
+        }           
     }
 
     private int getMaxElementIndex()

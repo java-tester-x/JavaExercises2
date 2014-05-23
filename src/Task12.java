@@ -48,6 +48,12 @@ public class Task12 extends AbstractTask {
         print_r(matrix);
     }
 
+    /**
+     * [replaceElementValue description]
+     * @param startIndex [description]
+     * @param endIndex   [description]
+     * @param newValue   [description]
+     */
     private void replaceElementValue(int startIndex, int endIndex, int newValue)
     {
         int i = 0;
@@ -64,6 +70,10 @@ public class Task12 extends AbstractTask {
         }   
     }
 
+    /**
+     * [getMaxElementIndex description]
+     * @return [description]
+     */
     private int getMaxElementIndex()
     {
         int maxElement      = matrix[0][0];
@@ -85,6 +95,10 @@ public class Task12 extends AbstractTask {
         return maxElementIndex;
     }
 
+    /**
+     * [getMinElementIndex description]
+     * @return [description]
+     */
     private int getMinElementIndex()
     {
         int minElement      = matrix[0][0];
