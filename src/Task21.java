@@ -31,6 +31,7 @@ import java.util.Scanner;
  */
 public class Task21 {
 
+    private ArrayList<Long> primes    = new ArrayList<Long>();
     private ArrayList<Long> triangles = new ArrayList<Long>();
 
     public static void main(String[] args) {
@@ -39,9 +40,44 @@ public class Task21 {
     }
 
     private void run() {
+        generatePrimes(50000);
+        printPrimes();
         // generateTriangles();
-        generateTriangles2();
-        prinTriangles();
+        //generateTriangles2();
+        //prinTriangles();
+    }
+
+
+    private void factorize(long number) {
+        
+    }
+
+    private void generatePrimes(long hiBoundary)
+    {
+        for (long i = 2; i <= hiBoundary; i++) {
+            if (! isPrime(i)) {
+                continue;
+            }
+            primes.add(Long.valueOf(i));
+        }
+    }
+
+    private boolean isPrime(long number)
+    {
+        long factors = 0L;
+        for (long i = 1L; i <= number; i++) {
+            factors += (number % i == 0L) ? 1L : 0L;
+        }
+        return (factors == 2L);
+    }
+
+    private void printPrimes()
+    {
+        long i = 1L;
+        for (Long x : primes) {
+            System.out.printf("%1$d: %2$d\n", i, x);
+            i++;
+        }
     }
 
     private void generateTriangles2()
