@@ -40,18 +40,104 @@ public class Task21 {
     }
 
     private void run() {
-        generatePrimes(50000);
-        printPrimes();
-        // generateTriangles();
-        //generateTriangles2();
-        //prinTriangles();
-    }
-
-
-    private void factorize(long number) {
+        System.out.printf("Generating primes up to %1$d ... \n", 5000);
+        generatePrimes(5000L);
+        //printPrimes();
         
+        // some tests
+        System.out.println("Running some tests...");
+        System.out.printf("The number %1$d have %2$d divisors\n", 12, getNumberDivisors(12));        
+        System.out.printf("The number %1$d have %2$d divisors\n", 48, getNumberDivisors(48));
+        System.out.printf("The number %1$d have %2$d divisors\n", 17, getNumberDivisors(17));
+        System.out.printf("The number %1$d have %2$d divisors\n", 25, getNumberDivisors(25));
+        System.out.printf("The number %1$d have %2$d divisors\n", 60, getNumberDivisors(60));
+        System.out.printf("The number %1$d have %2$d divisors\n", 100, getNumberDivisors(100));
+        System.out.printf("The number %1$d have %2$d divisors\n", 45360, getNumberDivisors(45360));
+        System.out.printf("The number %1$d have %2$d divisors\n", 73920, getNumberDivisors(73920));
+
+        // additional tests
+        System.out.println("Running some additional tests...");
+        System.out.printf("First triangle number to have over %1$d divisors: %2$d\n"
+            , 5, getTrianglesWithSpecificNumberOfDivisors(5)
+        );
+        System.out.printf("First triangle number to have over %1$d divisors: %2$d\n"
+            , 50, getTrianglesWithSpecificNumberOfDivisors(50)
+        );
+        System.out.printf("First triangle number to have over %1$d divisors: %2$d\n"
+            , 500, getTrianglesWithSpecificNumberOfDivisors(500)
+        );
+
+        // find out solution of problem
+        System.out.println("Find out solution for our task...");
+        System.out.printf("First triangle number to have over %1$d divisors: %2$d\n"
+            , 5000, getTrianglesWithSpecificNumberOfDivisors(5000)
+        );
     }
 
+    /**
+     * [generateTriangles2 description]
+     */
+    private long getTrianglesWithSpecificNumberOfDivisors(int specificNumberOfDivisors)
+    {
+        long i        = 1L;
+        long triangle = 0L;
+        do {
+            triangle += i;
+            triangles.add(Long.valueOf(triangle));
+            i++;
+        }
+        while (getNumberDivisors(triangle) < specificNumberOfDivisors);
+
+        return triangle;
+    }
+
+    /**
+     * [getNumberDivisors description]
+     * @param  number [description]
+     * @return        [description]
+     */
+    private long getNumberDivisors(long number)
+    {
+        long tmp = number;
+
+        ArrayList<Long> factors = new ArrayList<Long>();
+        for (long p : primes)
+        {
+            if (tmp < p) {
+                break;
+            }
+
+            long numberOfTimesDivisorRepeated = 0;
+            while (true)
+            {
+                if (tmp % p == 0) {
+                    numberOfTimesDivisorRepeated++;
+                    tmp /= p;
+                    continue;
+                }
+
+                if (numberOfTimesDivisorRepeated > 0) {
+                    factors.add(Long.valueOf(numberOfTimesDivisorRepeated));    
+                }
+
+                break;
+            }
+        }
+
+        // divisors number: a^x + b^y + c^z = (x + 1) * (y + 1) * (z + 1), where:
+        // 1) a, b, c are n's prime divisors 
+        // 2) x, y, z are the number of times that divisor is repeated)
+        long numberDivisors = 1;
+        for (long x : factors) {
+            numberDivisors *= (x + 1);
+        }
+        return numberDivisors;
+    }
+
+    /**
+     * [generatePrimes description]
+     * @param hiBoundary [description]
+     */
     private void generatePrimes(long hiBoundary)
     {
         for (long i = 2; i <= hiBoundary; i++) {
@@ -62,6 +148,11 @@ public class Task21 {
         }
     }
 
+    /**
+     * [isPrime description]
+     * @param  number [description]
+     * @return        [description]
+     */
     private boolean isPrime(long number)
     {
         long factors = 0L;
@@ -71,6 +162,9 @@ public class Task21 {
         return (factors == 2L);
     }
 
+    /**
+     * [printPrimes description]
+     */
     private void printPrimes()
     {
         long i = 1L;
@@ -78,11 +172,6 @@ public class Task21 {
             System.out.printf("%1$d: %2$d\n", i, x);
             i++;
         }
-    }
-
-    private void generateTriangles2()
-    {
-        // 
     }
 
     // private void generateTriangles()
