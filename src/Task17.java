@@ -35,4 +35,12 @@ import java.util.Scanner;
  */
 public class Task17 {
 
+    public static void main(String[] args) {
+        Task17 t = new Task17();
+        t.run();
+    }
+
+    private void run() {
+
+    }
 }

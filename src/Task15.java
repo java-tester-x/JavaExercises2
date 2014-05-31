@@ -14,4 +14,32 @@ import java.util.Scanner;
 
 public class Task15 {
 
+    public static void main(String[] args) {
+        Task15 t = new Task15();
+        t.run();
+    }
+
+    private void run() {
+        System.out.printf("The sum of all the multiples of 3 or 5 below 1000 = %1$d"
+            , getSumOfMultiplesOfThreeAndFive(1000)
+        );
+    }
+
+    private boolean isMultipleOf(long inputNumber, long divisorNumber)
+    {
+        return (inputNumber % divisorNumber == 0);
+    }
+
+    private long getSumOfMultiplesOfThreeAndFive(long boundaryNumber)
+    {
+        long sum = 0;
+        for (long i = 3; i < boundaryNumber; i++)
+        {
+            if (! (isMultipleOf(i, 3) || isMultipleOf(i, 5))) {
+                continue;
+            }
+            sum += i;
+        }
+        return sum;
+    }
 }

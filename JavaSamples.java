@@ -45,8 +45,14 @@ public class JavaSamples {
         System.out.println("\n******** TASK15 **************");
         // Task15.main(args); 
         
+        System.out.println("\n******** TASK15 **************");
+        // Task16.main(args); 
+
+        System.out.println("\n******** TASK15 **************");
+        Task17.main(args); 
+
         System.out.println("\n******** TASK21 **************");
-        Task21.main(args); 
+        // Task21.main(args); 
 
         System.out.println("\n******** TASK22 **************");
         // Task22.main(args); 
