@@ -64,23 +64,43 @@ public class Task17 {
 
     private void run()
     {
-        String[] parts = digits.split("0");
+        String   adjacentDigits   = "";
+        String   maxProductString = "";
+        long     maxProduct       = 1;
+        int      adjacentDigitsCount = 0;
+        int      maxProductAdjacentDigitsIndex = 0;
+
+        String[] parts            = digits.split("0");
         for (String s : parts)
         {
             if (s.length() < 13) {
                 continue;
             }
 
-            for (int i = 0; i < s.length - 13; i++) {
-
+            for (int i = 0; i <= s.length() - 13; i++)
+            {                
+                adjacentDigits = s.substring(i, 13 + i);                
+                long tmp = getProduct(adjacentDigits);
+                
+                System.out.printf("#%1$d %2$s Product: %3$d\n", ++adjacentDigitsCount, adjacentDigits, tmp);
+                if (tmp <= maxProduct) {
+                    continue;
+                }
+                maxProduct       = tmp;
+                maxProductString = adjacentDigits;
+                maxProductAdjacentDigitsIndex = adjacentDigitsCount;
             }
         }
+
+        System.out.printf(
+            "The thirteen adjacent digits #%1$d that have the greatest product %2$d is %3$s\n"
+            , maxProductAdjacentDigitsIndex, maxProduct, maxProductString);
     }
 
     private long getProduct(String adjacentDigits)
     {
         long prod = 1L;
-        for (char ch : adjacentDigits) {
+        for (char ch : adjacentDigits.toCharArray()) {
             prod *= Character.digit(ch,10);
         }
         return prod;
