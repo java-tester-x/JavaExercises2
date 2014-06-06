@@ -45,11 +45,17 @@ public class JavaSamples {
         System.out.println("\n******** TASK15 **************");
         // Task15.main(args); 
         
-        System.out.println("\n******** TASK15 **************");
+        System.out.println("\n******** TASK16 **************");
         // Task16.main(args); 
 
-        System.out.println("\n******** TASK15 **************");
-        Task17.main(args); 
+        System.out.println("\n******** TASK17 **************");
+        // Task17.main(args); 
+        
+        System.out.println("\n******** TASK18 **************");
+        // Task18.main(args);         
+
+        System.out.println("\n******** TASK18 **************");
+        Task19.main(args);         
 
         System.out.println("\n******** TASK21 **************");
         // Task21.main(args); 
