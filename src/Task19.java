@@ -38,7 +38,7 @@ import java.util.Scanner;
 public class Task19 {
 
     private int[][] matrix = {
-        {8,   2, 22, 97, 38, 15,  0, 40,  0, 75,  4,  5,  7, 78, 52, 12, 50, 77, 91,  8},
+        { 8,  2, 22, 97, 38, 15,  0, 40,  0, 75,  4,  5,  7, 78, 52, 12, 50, 77, 91,  8},
         {49, 49, 99, 40, 17, 81, 18, 57, 60, 87, 17, 40, 98, 43, 69, 48, 04, 56, 62,  0},
         {81, 49, 31, 73, 55, 79, 14, 29, 93, 71, 40, 67, 53, 88, 30, 03, 49, 13, 36, 65},
         {52, 70, 95, 23,  4, 60, 11, 42, 69, 24, 68, 56, 01, 32, 56, 71, 37,  2, 36, 91},
@@ -60,6 +60,8 @@ public class Task19 {
         { 1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52,  1, 89, 19, 67, 48}
     };
 
+    private int boundLength = 4;
+
     public static void main(String[] args) {
         Task19 t = new Task19();
         t.run();
@@ -67,6 +69,12 @@ public class Task19 {
 
     private void run()
     {
-        // 
+        long productDown  = 1;
+        long productRight = 1;
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix.length; j++) {
+
+            }
+        }
     }
 }

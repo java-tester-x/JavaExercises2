@@ -54,11 +54,11 @@ public class JavaSamples {
         System.out.println("\n******** TASK18 **************");
         // Task18.main(args);         
 
-        System.out.println("\n******** TASK18 **************");
-        Task19.main(args);         
+        System.out.println("\n******** TASK19 **************");
+        // Task19.main(args);         NOT SOLVED!!!!
 
         System.out.println("\n******** TASK21 **************");
-        // Task21.main(args); 
+        Task20.main(args); 
 
         System.out.println("\n******** TASK22 **************");
         // Task22.main(args); 
